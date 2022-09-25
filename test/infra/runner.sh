@@ -20,7 +20,7 @@ set -o nounset  # Error if accessing an unbound variable
 set -x          # Print each command as it is run
 
 export CLUSTER_NAME=test-mgmt-cluster
-export PROJECT_ID=secretmanager-csi-build
+export PROJECT_ID=dyolcekaj-misc
 export SECRET_STORE_VERSION=${SECRET_STORE_VERSION:-v1.0.0}
 export GKE_VERSION=${GKE_VERSION:-STABLE}
 export GCP_PROVIDER_SHA=${GITHUB_SHA:-main}

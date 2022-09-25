@@ -15,79 +15,65 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicy
 metadata:
   name: iam-policy
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
 spec:
   resourceRef:
     apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
     kind: Project
-    external: projects/secretmanager-csi-build
+    external: projects/dyolcekaj-misc
   bindings:
-    # github trigger permissions (needs to build images + schedule pods)
-    - members:
-        - serviceAccount:gh-e2e-runner@secretmanager-csi-build.iam.gserviceaccount.com
-      role: roles/cloudbuild.builds.builder
-    - members:
-        - serviceAccount:gh-e2e-runner@secretmanager-csi-build.iam.gserviceaccount.com
-      role: roles/container.developer
-    - members:
-        - serviceAccount:gh-e2e-runner@secretmanager-csi-build.iam.gserviceaccount.com
-      role: roles/serviceusage.serviceUsageConsumer
-    - members:
-        - serviceAccount:gh-e2e-runner@secretmanager-csi-build.iam.gserviceaccount.com
-      role: roles/viewer
     # cnrm controller permissions (manage all test/infra/managed resources)
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/iam.securityAdmin
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/compute.instanceAdmin.v1
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/container.admin
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/iam.serviceAccountAdmin
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/iam.serviceAccountUser
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/secretmanager.admin
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/iam.securityAdmin
     - members:
-        - serviceAccount:cnrm-system@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:cnrm-system@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/monitoring.metricWriter
     # for e2e tests to manage test clusters and administer secrets
     - members:
-        - serviceAccount:e2e-test-sa@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:e2e-test-sa@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/container.admin
     - members:
-        - serviceAccount:e2e-test-sa@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:e2e-test-sa@dyolcekaj-misc.iam.gserviceaccount.com
       role: roles/secretmanager.admin
     # for test cluster to access secrets
     - members:
-        - serviceAccount:secretmanager-csi-build.svc.id.goog[default/test-cluster-sa]
+        - serviceAccount:dyolcekaj-misc.svc.id.goog[default/test-cluster-sa]
       role: roles/secretmanager.secretAccessor
     # service account agent bindings
     - members:
-        - serviceAccount:service-735463103342@compute-system.iam.gserviceaccount.com
+        - serviceAccount:service-484784344649@compute-system.iam.gserviceaccount.com
       role: roles/compute.serviceAgent
     - members:
-        - serviceAccount:service-735463103342@container-engine-robot.iam.gserviceaccount.com
+        - serviceAccount:service-484784344649@container-engine-robot.iam.gserviceaccount.com
       role: roles/container.serviceAgent
     - members:
-        - serviceAccount:735463103342@cloudbuild.gserviceaccount.com
+        - serviceAccount:484784344649@cloudbuild.gserviceaccount.com
       role: roles/cloudbuild.builds.builder
     - members:
-        - serviceAccount:735463103342-compute@developer.gserviceaccount.com
-        - serviceAccount:735463103342@cloudservices.gserviceaccount.com
-        - serviceAccount:service-735463103342@containerregistry.iam.gserviceaccount.com
+        - serviceAccount:484784344649-compute@developer.gserviceaccount.com
+        - serviceAccount:484784344649@cloudservices.gserviceaccount.com
+        - serviceAccount:service-484784344649@containerregistry.iam.gserviceaccount.com
       role: roles/editor
     # Human Admins
     - members:
-        - user:colinman@google.com
-        - user:tommymurphy@google.com
+        - user:dyolcekaj@gmail.com
       role: roles/owner

@@ -15,7 +15,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMServiceAccount
 metadata:
   name: k8s-csi-test
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
 spec:
   displayName: Prow Integration Tests Service Account
   description: The Identity for secrets-store-csi-driver-e2e-gcp test cases in https://github.com/kubernetes/test-infra
@@ -24,7 +24,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicy
 metadata:
   name: k8s-csi-test-bindings
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
 spec:
   resourceRef:
     apiVersion: iam.cnrm.cloud.google.com/v1beta1
@@ -33,7 +33,7 @@ spec:
   bindings:
     # The secrets-store-csi-driver-e2e-gcp test cases in
     # https://github.com/kubernetes/test-infra will use workload identity to
-    # Act As serviceAccount:k8s-csi-test@secretmanager-csi-build.iam.gserviceaccount.com
+    # Act As serviceAccount:k8s-csi-test@dyolcekaj-misc.iam.gserviceaccount.com
     - role: roles/iam.workloadIdentityUser
       members:
         - serviceAccount:k8s-prow-builds.svc.id.goog[test-pods/secrets-store-csi-driver-gcp]
@@ -42,7 +42,7 @@ apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
 kind: SecretManagerSecret
 metadata:
   name: test-secret-a
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
   labels:
     replication-type: automatic
 spec:
@@ -53,7 +53,7 @@ apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
 kind: SecretManagerSecretVersion
 metadata:
   name: test-secret-a-version
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
 spec:
   enabled: true
   secretData:
@@ -66,7 +66,7 @@ apiVersion: iam.cnrm.cloud.google.com/v1beta1
 kind: IAMPolicy
 metadata:
   name: test-secret-a-binding
-  namespace: secretmanager-csi-build
+  namespace: dyolcekaj-misc
 spec:
   resourceRef:
     apiVersion: secretmanager.cnrm.cloud.google.com/v1beta1
@@ -75,4 +75,4 @@ spec:
   bindings:
     - role: roles/secretmanager.secretAccessor
       members:
-        - serviceAccount:k8s-csi-test@secretmanager-csi-build.iam.gserviceaccount.com
+        - serviceAccount:k8s-csi-test@dyolcekaj-misc.iam.gserviceaccount.com

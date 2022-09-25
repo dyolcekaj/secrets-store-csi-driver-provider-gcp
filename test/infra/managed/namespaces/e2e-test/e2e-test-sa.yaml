@@ -17,4 +17,4 @@ metadata:
   name: e2e-test-sa
   namespace: e2e-test
   annotations:
-    iam.gke.io/gcp-service-account: e2e-test-sa@secretmanager-csi-build.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: e2e-test-sa@dyolcekaj-misc.iam.gserviceaccount.com
