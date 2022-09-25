@@ -141,7 +141,7 @@ func handleMountEvent(ctx context.Context, client *secretmanager.Client, creds c
 	for i, secret := range cfg.Secrets {
 		mode := int32(cfg.Permissions)
 		if secret.Mode != nil {
-			mode = int32(os.FileMode(*secret.Mode))
+			mode = *secret.Mode
 		}
 
 		result := results[i]
